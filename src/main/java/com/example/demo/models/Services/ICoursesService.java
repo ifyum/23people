@@ -1,7 +1,7 @@
-package com.example.demo.models.services;
+package com.example.demo.models.Services;
 
-import com.example.demo.domain.Courses;
-import com.example.demo.models.dto.CoursesDTO;
+import com.example.demo.models.entity.Courses;
+import com.example.demo.models.Services.dto.CoursesDTO;
 
 import java.util.List;
 

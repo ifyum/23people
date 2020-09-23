@@ -1,6 +1,6 @@
 version: '2'
 services:
-  ifyum-mysql:
+  rbarrera-mysql:
     image: mysql:8.0.17
 
     environment:

@@ -1,12 +1,20 @@
-package com.example.demo.models.dto;
+package com.example.demo.models.Services.dto;
+import lombok.Data;
 
+//@Data
 public class CoursesDTO {
-
+    private Long id;
     private String name ;
-
-
-    // max chart 4
+   // max chart 4
     private String code;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -26,8 +34,9 @@ public class CoursesDTO {
 
     @Override
     public String toString() {
-        return "Courses{" +
-                "name='" + name + '\'' +
+        return "CoursesDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 '}';
     }
