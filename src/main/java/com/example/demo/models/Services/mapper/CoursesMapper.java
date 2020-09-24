@@ -11,7 +11,7 @@ public interface CoursesMapper extends  EntityMapper<CoursesDTO, Courses>{
 
  CoursesDTO toDto (Courses courses);
 
-    Courses toEntity(CoursesDTO CoursesDTO);
+    Courses toEntity(CoursesDTO coursesDTO);
 
 
     default Courses fromId (Long id) {

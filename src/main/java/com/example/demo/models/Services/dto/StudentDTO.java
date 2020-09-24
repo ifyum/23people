@@ -1,32 +1,22 @@
-package com.example.demo.models.entity;
+package com.example.demo.models.Services.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "Student")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StudentDTO {
     private Long id;
 
-    @Column(name = "rut")
     private Long rut ;
-    @Column(name = "name")
+
     private String name;
-    @Column(name = "lastname")
+
     private String lastname;
-    @Column(name = "age")
+
     private Long age;
-    @Column(name = "course")
+
     private String course;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getRut() {
         return rut;
@@ -71,8 +61,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", rut=" + rut +
+                "rut=" + rut +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
