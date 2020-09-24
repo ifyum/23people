@@ -10,7 +10,7 @@ public interface IStudentService {
 
     public Student findById(Long id);
 
-    public StudentDTO save(StudentDTO studentDTO);
+    public Student save(Student student);
 
     public void delete(Long id);
 }

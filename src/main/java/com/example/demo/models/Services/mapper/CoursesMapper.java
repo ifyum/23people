@@ -7,12 +7,12 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface CoursesMapper extends  EntityMapper<CoursesDTO, Courses>{
- CoursesMapper INSTANCE = Mappers.getMapper( CoursesMapper.class );
 
- CoursesDTO toDto (Courses courses);
+    CoursesMapper INSTANCE = Mappers.getMapper( CoursesMapper.class );
+
+    CoursesDTO toDto (Courses courses);
 
     Courses toEntity(CoursesDTO coursesDTO);
-
 
     default Courses fromId (Long id) {
         if (id == null) {

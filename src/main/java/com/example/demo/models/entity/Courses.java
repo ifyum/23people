@@ -2,18 +2,22 @@ package com.example.demo.models.entity;
 
 
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+@Data
 @Entity
 @Table(name = "courses")
-public class Courses {
+public class Courses implements  Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
     private String name ;
-
+    @Size(max = 4)
     @Column(name = "code")
     // max chart 4
     private String code;
@@ -50,5 +54,7 @@ public class Courses {
                 ", code='" + code + '\'' +
                 '}';
     }
+
+
 }
 

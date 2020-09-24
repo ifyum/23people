@@ -1,16 +1,17 @@
 package com.example.demo.models.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Student")
-public class Student {
+public class Student   implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "rut")
-    private Long rut ;
+    private String rut ;
     @Column(name = "name")
     private String name;
     @Column(name = "lastname")
@@ -28,11 +29,11 @@ public class Student {
         this.id = id;
     }
 
-    public Long getRut() {
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Long rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 

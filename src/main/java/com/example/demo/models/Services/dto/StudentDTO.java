@@ -4,11 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-public class StudentDTO {
+public class StudentDTO  implements Serializable {
     private Long id;
 
-    private Long rut ;
+    private String rut ;
 
     private String name;
 
@@ -18,11 +19,12 @@ public class StudentDTO {
 
     private String course;
 
-    public Long getRut() {
+
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Long rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 
@@ -60,8 +62,9 @@ public class StudentDTO {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "rut=" + rut +
+        return "StudentDTO{" +
+                "id=" + id +
+                ", rut=" + rut +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +

@@ -1,11 +1,16 @@
 package com.example.demo.models.Services.dto;
 import lombok.Data;
 
-//@Data
-public class CoursesDTO {
-    private Long id;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+
+@Data
+public class CoursesDTO  implements Serializable {
+
+   private Long id;
     private String name ;
    // max chart 4
+    @Size(max = 4)
     private String code;
 
     public Long getId() {

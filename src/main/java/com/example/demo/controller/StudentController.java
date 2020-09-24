@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.errors.BadRequestAlertException;
 import com.example.demo.models.Services.IStudentService;
+import com.example.demo.models.Services.RutValidator;
 import com.example.demo.models.Services.StudentServiceImpl;
 import com.example.demo.models.Services.dto.StudentDTO;
 import com.example.demo.models.entity.Student;
@@ -10,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class StudentController {
     private final Logger log = LoggerFactory.getLogger(StudentServiceImpl.class);
+    private static final String ENTITY_NAME = "Student";
     @Autowired
     private IStudentService studentService;
 
@@ -28,23 +32,30 @@ public class StudentController {
     }
 
     @PostMapping("/student")
+    @Valid
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentDTO create(@RequestBody StudentDTO coursesDTO) {
+    public Student create(@RequestBody Student student) {
+        log.debug("Controller Courses DTO : {}", student);
+        if (RutValidator.validateRun(student.getRut()))
+        {
+          return  studentService.save(student);
+        }
+        else
+        {
+            throw new BadRequestAlertException("A Student invalid rut", ENTITY_NAME, "rut invalid");
+        }
 
-        log.debug("Controller Courses DTO : {}", coursesDTO);
-
-        return studentService.save(coursesDTO);
     }
 
     @PutMapping("/student")
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentDTO update(@RequestBody StudentDTO coursesDTO) {
-        return studentService.save(coursesDTO);
+    public Student update(@RequestBody Student courses) {
+        return studentService.save(courses);
     }
 
 
     @DeleteMapping("/student/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void detele(@PathVariable Long id) {
         studentService.delete(id);
     }

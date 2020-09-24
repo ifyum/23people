@@ -18,13 +18,15 @@ import java.util.List;
 
 
 @Service
-public class CourseServiceImpl implements ICoursesService {
+public class CoursesServiceImpl implements ICoursesService {
 
-    private final Logger log = LoggerFactory.getLogger(CourseServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(CoursesServiceImpl.class);
 
     @Autowired
     private CoursesRepository coursesRepository;
-    private  CoursesMapper coursesMapper;
+//    @Autowired
+//    private  CoursesMapper coursesMapper;
+//
 
     @Override
     @Transactional(readOnly = true)
@@ -37,19 +39,29 @@ public class CourseServiceImpl implements ICoursesService {
         return coursesRepository.findById(id).orElse(null);
     }
 
+
     @Override
-    public CoursesDTO save(CoursesDTO coursesDTO) {
-        log.debug("Request to save courses : {}", coursesDTO);
+    public Courses save(Courses courses) {
 
-        Courses courses = coursesMapper.toEntity(coursesDTO);
-        courses = coursesRepository.save(courses);
+        log.debug("Request to save courses : {}", courses);
 
-        return coursesMapper.toDto(courses);
+        return coursesRepository.save(courses);
     }
+
+//    @Override
+//    public CoursesDTO save(CoursesDTO coursesDTO) {
+//        log.debug("Request to save courses : {}", coursesDTO);
+//
+//        Courses courses = coursesMapper.toEntity(coursesDTO);
+//        courses = coursesRepository.save(courses);
+//
+//        return coursesMapper.toDto(courses);
+//    }
 
     @Override
     public void delete(Long id) {
-
+        // TODO Auto-generated method stub
+        coursesRepository.deleteById(id);
     }
 
 
