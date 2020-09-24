@@ -10,7 +10,7 @@ public interface ICoursesService {
 
     public Courses findById(Long id);
 
-    public CoursesDTO save(CoursesDTO clienteDTO);
+    public CoursesDTO save(CoursesDTO coursesDTO);
 
     public void delete(Long id);
 }

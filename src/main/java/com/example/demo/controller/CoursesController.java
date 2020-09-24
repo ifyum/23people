@@ -38,4 +38,16 @@ public class CoursesController {
         return courseService.save(coursesDTO);
     }
 
+    @PutMapping("/courses")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CoursesDTO update(@RequestBody CoursesDTO coursesDTO) {
+        return courseService.save(coursesDTO);
+    }
+
+
+    @DeleteMapping("/courses/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public void detele(@PathVariable Long id) {
+        courseService.delete(id);
+    }
 }
